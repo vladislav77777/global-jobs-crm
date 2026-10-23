@@ -1,0 +1,55 @@
+{
+  "note": "Format reference only. Replace every example with the current owner's real facts; SHA256_OF_RAW_CV is a placeholder, not a usable checksum.",
+  "profile": {
+    "cv_sha256": "SHA256_OF_RAW_CV",
+    "java_start": "2020-01",
+    "fields": {
+      "name": {"value": "Example Engineer", "confirmed": true, "evidence": "CV heading"}
+    },
+    "confirmed_answers": {
+      "notice": {"answer": "I can start in four weeks.", "evidence": ["Owner message confirming four weeks"]}
+    },
+    "policy": {"skip_optional": true},
+    "resume_file": {
+      "path": ".local/resume.pdf",
+      "cv_sha256": "SHA256_OF_RAW_CV",
+      "file_sha256": "SHA256_OF_PDF_BYTES"
+    }
+  },
+  "bank": [
+    {
+      "key": "summary",
+      "question": "What is your background?",
+      "category": "Profile",
+      "answer": "I am a Java backend engineer.",
+      "evidence": ["Java backend engineer"],
+      "state": "CV evidence",
+      "auto_reuse": true,
+      "cv_sha256": "SHA256_OF_RAW_CV"
+    }
+  ],
+  "drafts": [
+    {
+      "company": "Example company",
+      "role": "Backend Engineer",
+      "job_url": "https://jobs.example.com/backend-java/1",
+      "notion_job_url": "https://www.notion.so/00000000000000000000000000000000",
+      "notion_preparation_url": null,
+      "cv_sha256": "SHA256_OF_RAW_CV",
+      "letter": "I’m applying for the Backend Engineer role. My background is Java backend development. I would like to discuss how that experience fits your team.",
+      "letter_evidence": ["summary"],
+      "form": {
+        "ats": "Inspected employer form",
+        "url": "https://jobs.example.com/backend-java/1/apply",
+        "checked_at": "YYYY-MM-DD",
+        "fields": [
+          {"label": "Name", "binding": "profile:name", "required": true, "kind": "text"},
+          {"label": "Cover Letter", "binding": "cover_letter", "required": false, "kind": "text"},
+          {"label": "Work authorisation", "binding": "profile:work_rights_country", "required": true, "kind": "select", "options": ["Yes", "No"]},
+          {"label": "Privacy acknowledgement", "required": true, "kind": "consent"}
+        ],
+        "blockers": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "reviewed": false,
+    "direct_verified": false,
+    "posted": null,
+    "sources": [],
+    "properties": {
+      "Role": "Backend Engineer (Java)",
+      "Company": "Example company",
+      "Source": "HiringCafe",
+      "Employer job URL": "https://jobs.example.com/backend-java/1",
+      "Apply URL": "https://jobs.example.com/backend-java/1/apply",
+      "Source URL": "https://jobs.example.com/backend-java/1",
+      "Link check": "Unavailable"
+    }
+  }
+]

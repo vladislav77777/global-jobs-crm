@@ -1,0 +1,47 @@
+{
+  "timezone": "Europe/London",
+  "notion": {
+    "root_page_id": "",
+    "profile_page_id": "",
+    "preparation_page_id": "",
+    "rules_page_id": "",
+    "jobs_data_source_id": "",
+    "sources_data_source_id": "",
+    "answers_data_source_id": "",
+    "actions_data_source_id": "",
+    "responses_data_source_id": "",
+    "referrals_data_source_id": ""
+  },
+  "telegram": {
+    "mcp_server": "telegram",
+    "folder_id": null
+  },
+  "email": {
+    "mcp_server": "",
+    "provider": "gmail",
+    "transport": "smtp_imap",
+    "read_transport": "",
+    "sender": "",
+    "smtp_host": "",
+    "smtp_port": 465,
+    "imap_host": "",
+    "imap_port": 993,
+    "mailbox": "INBOX",
+    "username_env": "CRM_EMAIL_USER",
+    "password_env": "CRM_EMAIL_PASSWORD"
+  },
+  "collection": {
+    "lookback_days": 14,
+    "telegram_max_age_days": 21,
+    "overlap_hours": 72,
+    "max_new_jobs": 20
+  },
+  "paths": {
+    "private_dir": ".local",
+    "output_dir": "outputs"
+  },
+  "delivery": {
+    "live_sending": false,
+    "max_replies_per_24h": 5
+  }
+}

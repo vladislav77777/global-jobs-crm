@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Application adapter test</title>
+<style>body{font:17px/1.5 system-ui;max-width:700px;margin:40px auto;background:#f5f7fa;color:#182837}form{background:white;padding:26px;border-radius:14px}label{display:block;margin:15px 0}input,textarea,select{display:block;width:95%;padding:10px;font:inherit}button{padding:12px 20px;background:#125c50;color:white;border:0;border-radius:6px}aside{padding:18px;background:#e7f2ec}</style>
+<h1>Application adapter test</h1><aside>Synthetic local fixture. No employer or external service receives data.</aside>
+<form id="application"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label>
+<label>Work format<select name="format" required><option>Remote</option><option>Hybrid</option><option>Office</option></select></label>
+<label>Cover letter<textarea name="letter"></textarea></label><label>Phone (optional)<input name="phone"></label>
+<label>Resume<input type="file" name="resume" required></label>
+<button type="submit">Apply</button></form><p role="status" id="receipt"></p>
+<script>document.getElementById('application').addEventListener('submit',e=>{e.preventDefault();document.getElementById('receipt').textContent='Application received. Test reference: LOCAL-001. External deliveries: 0.';});</script></html>

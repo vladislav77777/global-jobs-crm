@@ -1,0 +1,145 @@
+{
+  "version": 3,
+  "databases": {
+    "jobs": {
+      "title": "Jobs",
+      "schema": "CREATE TABLE (\"Role\" TITLE, \"Employer job URL\" URL, \"CV version\" RICH_TEXT, \"All sources\" RICH_TEXT, \"Employer posting date\" DATE, \"Response date\" DATE, \"Applied date\" DATE, \"Source posting date\" DATE, \"Next action date\" DATE, \"Salary\" RICH_TEXT, \"Source\" SELECT('Telegram':blue, 'HiringCafe':orange, 'LinkedIn Jobs':purple, 'LinkedIn Post':pink, 'Company website':green), \"Source URL\" URL, \"Deduplication key\" RICH_TEXT, \"Response notes\" RICH_TEXT, \"Company\" RICH_TEXT, \"Contact\" RICH_TEXT, \"Location\" RICH_TEXT, \"Found\" CREATED_TIME, \"Input needed\" RICH_TEXT, \"Updated\" LAST_EDITED_TIME, \"Published\" DATE, \"Latest reply\" RICH_TEXT, \"Preparation resources\" URL, \"Preparation\" SELECT('Not started':gray, 'Letter ready':blue, 'Input needed':orange, 'Draft ready':green), \"Delivery receipt\" RICH_TEXT, \"Last contact\" DATE, \"Last checked\" DATE, \"Match notes\" RICH_TEXT, \"Email\" EMAIL, \"Priority\" SELECT('High':red, 'Normal':blue, 'Low':gray), \"Closure reason\" RICH_TEXT, \"Rejection reason\" SELECT('Location':orange, 'Work authorization / visa':orange, 'Experience':red, 'Skills / stack':red, 'Level':purple, 'Salary':yellow, 'Language':yellow, 'Position closed':gray, 'Another candidate':gray, 'Other':gray, 'Not specified':gray), \"Link check\" SELECT('Form available':green, 'Description available':blue, 'Contact in post':yellow, 'Unavailable':red), \"Response outcome\" SELECT('Not applied':gray, 'Awaiting response':yellow, 'Acknowledgement':blue, 'Questions':purple, 'Interview invitation':green, 'Rejection':red, 'Offer':green, 'Other':gray), \"Next action\" RICH_TEXT, \"Application channel\" SELECT('Employer form':green, 'Email':blue, 'Telegram':purple, 'LinkedIn':pink), \"Apply URL\" URL, \"Response URL\" URL, \"Stack\" MULTI_SELECT('Java':orange, 'Go':blue, 'Kotlin':purple, 'Spring':green, 'PostgreSQL':blue, 'Kafka':gray, 'Kubernetes':purple, 'AWS':yellow), \"Country\" RICH_TEXT, \"Level\" SELECT('Middle':blue, 'Senior':purple, 'Lead':orange, 'Staff':pink, 'Principal':red), \"Work format\" SELECT('Remote':green, 'Hybrid':blue, 'Office':gray), \"Stage\" STATUS('New':gray:to_do, 'Rejection':red:complete, 'Closed':gray:complete, 'Skipped':gray:complete, 'Offer':green:complete, 'Submitting':orange:in_progress, 'Applied':blue:in_progress, 'Conversation':purple:in_progress, 'Interview':yellow:in_progress, 'Needs attention':orange:in_progress, 'Delivery uncertain':red:in_progress, 'Ready to apply':purple:to_do, 'CV match':blue:to_do), \"Status\" SELECT('Review':gray, 'Applied':blue, 'In progress':purple, 'Offer':green, 'Closed':gray, 'Needs attention':orange), \"Cover letter\" RICH_TEXT)"
+    },
+    "sources": {
+      "title": "Sources",
+      "schema": "CREATE TABLE (\"Created\" CREATED_TIME, \"Name\" TITLE, \"Tags\" MULTI_SELECT(), \"Last run\" DATE, \"Run status\" SELECT('Success':green, 'Partial':yellow, 'Error':red, 'Not checked':gray, 'Off':gray), \"Progress\" RICH_TEXT, \"Collection\" SELECT('On':green, 'Off':brown))"
+    },
+    "answers": {
+      "title": "Answer bank",
+      "schema": "CREATE TABLE (\"CV version\" RICH_TEXT, \"Question\" TITLE, \"Category\" SELECT('Profile':blue, 'Experience':purple, 'Example':green, 'Conditions':orange), \"Key\" RICH_TEXT, \"Evidence\" RICH_TEXT, \"Answer\" RICH_TEXT, \"Evidence status\" SELECT('CV evidence':green, 'Candidate confirmed':blue, 'Do not claim':gray, 'Needs input':orange))"
+    },
+    "responses": {
+      "title": "Email responses",
+      "optional": true,
+      "schema": "CREATE TABLE (\"Response\" TITLE, \"Company\" RICH_TEXT, \"Outcome\" SELECT('Acknowledgement':blue, 'Questions':purple, 'Interview invitation':green, 'Rejection':red, 'Offer':green, 'Other':gray), \"Review\" SELECT('Needs matching':orange, 'Matched':green, 'Ignored':gray), \"Received\" DATE, \"Original email\" URL, \"Job\" RELATION('{{jobs_data_source_id}}'), \"Reason\" RICH_TEXT, \"Event key\" RICH_TEXT, \"Account\" EMAIL, \"Message ID\" RICH_TEXT, \"Sync state\" SELECT('Pending':orange, 'Applied':green, 'Review only':gray))"
+    },
+    "actions": {
+      "title": "Channel settings",
+      "schema": "CREATE TABLE (\"Connection status\" SELECT('Not implemented':orange, 'Not connected':red, 'Not verified':gray, 'Connected':green), \"Feature\" TITLE, \"Key\" RICH_TEXT, \"Daily limit\" NUMBER, \"Order\" NUMBER, \"Enabled\" SELECT('Off':gray, 'On':green), \"What it does\" RICH_TEXT)"
+    },
+    "referrals": {
+      "title": "Referrals",
+      "optional": true,
+      "schema": "CREATE TABLE (\"Request\" TITLE, \"Person\" RICH_TEXT, \"Company\" RICH_TEXT, \"Contact role\" RICH_TEXT, \"LinkedIn\" URL, \"Job\" RELATION('{{jobs_data_source_id}}'), \"Status\" SELECT('Draft':gray, 'Sent':blue, 'Replied':purple, 'Referred':green, 'Closed':gray, 'Needs attention':orange), \"Message draft\" RICH_TEXT, \"Why this person\" RICH_TEXT, \"Input needed\" RICH_TEXT, \"Next action\" RICH_TEXT, \"Last contact\" DATE, \"Reply\" RICH_TEXT, \"Evidence URL\" URL, \"Checked\" DATE, \"Request key\" RICH_TEXT, \"Account\" URL, \"CV version\" RICH_TEXT)"
+    }
+  },
+  "sources": [
+    {
+      "Name": "Telegram · Global Jobs",
+      "Collection": "Off",
+      "Run status": "Off"
+    },
+    {
+      "Name": "HiringCafe",
+      "Collection": "Off",
+      "Run status": "Off"
+    },
+    {
+      "Name": "LinkedIn · Jobs & Posts",
+      "Collection": "Off",
+      "Run status": "Off"
+    },
+    {
+      "Name": "Company websites",
+      "Collection": "Off",
+      "Run status": "Off"
+    },
+    {
+      "Name": "Referral Connections",
+      "Collection": "Off",
+      "Run status": "Off"
+    }
+  ],
+  "actions": [
+    {
+      "Key": "applications",
+      "Feature": "Applications — master switch",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 1,
+      "Daily limit": 5,
+      "What it does": "Master switch for new applications. Requires a channel switch and live mode. Shared limit: 5/day."
+    },
+    {
+      "Key": "web_apply",
+      "Feature": "Web applications",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 2,
+      "What it does": "Submit employer website forms. Does not enable email, Telegram or replies."
+    },
+    {
+      "Key": "telegram_connect",
+      "Feature": "Telegram connection & reading",
+      "Enabled": "Off",
+      "Connection status": "Not connected",
+      "Order": 3,
+      "What it does": "Read Telegram vacancies and messages. Does not allow sending."
+    },
+    {
+      "Key": "telegram_apply",
+      "Feature": "Telegram applications",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 4,
+      "What it does": "Send a first application to a verified Telegram hiring contact. Requires master switch."
+    },
+    {
+      "Key": "telegram_reply",
+      "Feature": "Telegram replies",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 5,
+      "What it does": "Reply in an existing, matched Telegram hiring conversation. Separate from new applications."
+    },
+    {
+      "Key": "email_connect",
+      "Feature": "Email connection & reading",
+      "Enabled": "Off",
+      "Connection status": "Not connected",
+      "Order": 6,
+      "What it does": "Read hiring emails and sync verified responses to Notion. Mailbox labeling is optional and separately authorized."
+    },
+    {
+      "Key": "email_apply",
+      "Feature": "Email applications",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 7,
+      "What it does": "Send a first application to a verified employer email address. Requires master switch."
+    },
+    {
+      "Key": "email_reply",
+      "Feature": "Email replies",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 8,
+      "What it does": "Reply to an existing, matched hiring email. Gmail sending is not connected."
+    },
+    {
+      "Key": "follow_up",
+      "Feature": "Follow-ups",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 9,
+      "What it does": "Send reminders after an unanswered application. Not implemented; keep Off."
+    },
+    {
+      "Key": "referrals",
+      "Feature": "Referral requests",
+      "Enabled": "Off",
+      "Connection status": "Not implemented",
+      "Order": 10,
+      "What it does": "Send referral requests to verified first-degree LinkedIn connections. Sending is not implemented; keep Off."
+    }
+  ],
+  "profile": {
+    "title": "My profile & CV",
+    "content": "## CV\nAdd your accessible English CV link here.\n\n## Search preferences\nTarget roles, countries, work formats and compensation.\n\n## Confirmed facts\nContact details, location, work authorization, sponsorship and notice period.\n\n## Missing information\nRecord unknown required answers here; do not invent them.\n\nSending is off."
+  }
+}
