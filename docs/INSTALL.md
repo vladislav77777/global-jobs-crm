@@ -1,5 +1,7 @@
 # Agent installation
 
+**Moving the same owner to another laptop?** Use [the continuation guide](CONTINUE_ON_ANOTHER_LAPTOP.md) instead. Restore the existing private state and reuse the same Notion workspace. The instructions below provision a new owner's empty CRM.
+
 Install for a new owner, using this checkout and that owner's accounts. Read this document and [the runtime runbook](../agent/RUNBOOK.md). Ask for the CV link, target roles/countries, work authorization, compensation, work format and selected services together. Use the host's built-in browser for required sign-ins. Never copy another person's Notion workspace, CV, contacts, email, secrets or ledger.
 
 A compatible agent host must provide terminal execution, Notion MCP and a browser. Telegram and Gmail are optional. Python modules plan and guard work; the host supplies real MCP/browser callbacks. There is no standalone background scraper or one-click cloud deployment.

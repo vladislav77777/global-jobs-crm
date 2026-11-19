@@ -14,6 +14,8 @@ Connect selected outbound email transports and validate existing employer-form/T
 
 ## 3. Package for a second owner and cloud execution
 
+Same-owner laptop continuation is implemented with `crm.transfer`: verified SQLite backups, private archive export/restore, retained checkpoints and deduplication, plus a new-agent handoff guide. Account reconnection and a single active laptop are still required. This does not provision an independent cloud executor or synchronize two live ledgers.
+
 The English README and detailed agent installation guide are included; a clean local installation with empty owner configuration and disabled sending has been verified. Next, validate onboarding with a second owner's empty Notion workspace, CV and accounts. Resolve all Notion IDs and channel identities during setup; never copy personal config, drafts, mail, network contacts, sessions or credentials. Sources and sending default Off. The supplied bootstrap contains optional response/referral schemas and neutral empty data.
 
 Set up an independent cloud executor with one shared durable ledger, private secrets, account access, monitoring, restart/recovery and the daily workflow. Prove operation without the owner's laptop. Cloud execution follows product validation.

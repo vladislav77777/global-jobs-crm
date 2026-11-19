@@ -1,5 +1,8 @@
 /.local/
 /outputs/
+/output/
+/.tmp_resume/
+/tmp/
 __pycache__/
 *.pyc
 /.venv/

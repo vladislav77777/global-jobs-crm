@@ -30,6 +30,12 @@ Notion schemas and views; Telegram/HiringCafe/LinkedIn/company-site collection p
 
 Requires Python 3.11+, Node.js 22+ for adapter tests, Git and an agent host with Notion MCP, terminal and browser access. Telegram/Gmail require the owner's own connected integrations. Python dependencies are installed from pyproject.toml; no Node package installation is needed.
 
+## Continue on another laptop
+
+For the **same owner and existing CRM**, follow [the laptop transfer guide](docs/CONTINUE_ON_ANOTHER_LAPTOP.md) and give the next agent [agent/CONTINUE.md](agent/CONTINUE.md). Do not run new-owner provisioning or create another Notion CRM.
+
+The code is on the default branch, `main`. Clone it on the new laptop and restore your separate private continuation archive with `python -m crm.transfer restore PATH_TO_ARCHIVE`. The archive retains the application ledger, verified checkpoints, CVs, pending work and local instructions. Connections and browser sign-ins must be verified again. Keep only one laptop processing this CRM at a time.
+
 **Current limits:** referral sending and automatic LinkedIn reply sync are not implemented. Outbound adapters require owner-specific integration and a verified pilot. CAPTCHA and unsupported forms require manual handling. Scheduling depends on the agent host; an independent cloud executor is not included.
 
-Personal config, CVs, mailbox data, contacts and runtime state stay in ignored config.local.json, .local/ and outputs/. Sharing this repository does not share your private Notion workspace or account connections. A private repository requires GitHub access for each recipient; sharing the URL alone does not grant access.
+Personal config, CVs, mailbox data, contacts and runtime state stay in ignored config.local.json, .local/ and outputs/. Sharing this repository does not share your private Notion workspace or account connections. Private transfer archives belong in .local/transfers/ and must not be committed or uploaded as repository assets. For a private fork, each recipient also needs GitHub access.
